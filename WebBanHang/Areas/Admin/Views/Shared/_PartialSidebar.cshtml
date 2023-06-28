@@ -1,0 +1,126 @@
+﻿<div class="sidebar">
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <li class="nav-item">
+                <a href="/Admin/Statistical" class="nav-link">
+                    <p>
+                        Thống kê
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/Admin/Category" class="nav-link">
+                    <p>
+                        Danh mục
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/Admin/News" class="nav-link">
+                    <p>
+                        Tin tức
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/Admin/posts" class="nav-link">
+                    <p>
+                        Bài viết
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <p>
+                        Quản lý sản phẩm ▽
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="/Admin/productcategory" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Danh mục sản phẩm</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Admin/Products" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Sản phẩm</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="/Admin/order" class="nav-link">
+                    <p>
+                        Đơn hàng
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/admin/settingsystem" class="nav-link">
+                    <p>
+                        Cấu hình hệ thống
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/admin/account" class="nav-link">
+                    <p>
+                        Tài khoản
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/admin/role" class="nav-link">
+                    <p>
+                        Phân quyền
+                    </p>
+                </a>
+            </li>
+            @if (User.Identity.IsAuthenticated == true)
+            {
+                <li class="nav-item">
+                    <a href="javascript:document.getElementById('logOffForm').submit()" class="nav-link">
+                        <p>
+                            Đăng xuất
+                        </p>
+                    </a>
+                </li>
+            }
+            @if (User.Identity.IsAuthenticated == false)
+            {
+                <li class="nav-item">
+                    <a href="/Admin/Account/Login" class="nav-link">
+                        <p>
+                            Đăng nhập
+                        </p>
+                    </a>
+                </li>
+            }
+            <li>
+                <hr style="background-color: azure" />
+            </li>
+            <li class="nav-item">
+                <a href="/" class="nav-link">
+                    <p>
+                        Trang chủ
+                    </p>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
+
+    @if (Request.IsAuthenticated)
+    {
+        <div style="display:none">
+            @using (Html.BeginForm("Logout", "Account", FormMethod.Post, new { @id = "logOffForm" }))
+            {
+                @Html.AntiForgeryToken()
+            }
+        </div>
+    }
+
+</div>

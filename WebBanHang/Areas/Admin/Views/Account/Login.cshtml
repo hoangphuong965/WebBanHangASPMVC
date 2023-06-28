@@ -1,0 +1,47 @@
+﻿@model WebBanHang.Models.LoginViewModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutLogin.cshtml";
+}
+<style>
+    .validation-summary-errors, .field-validation-error {
+        color: brown;
+    }
+</style>
+<div class="card-body login-card-body">
+    @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationMessage("logginError")
+        @Html.ValidationMessageFor(x => x.Email)
+        <div class="input-group mb-3">
+            @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @placeholder = "Email" })
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-envelope"></span>
+                </div>
+            </div>
+        </div>
+
+        @Html.ValidationMessageFor(x => x.Password)
+        <div class="input-group mb-3">
+            @Html.TextBoxFor(x => x.Password, new { @class = "form-control", @placeholder = "Mật khẩu", @type = "password" })
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-lock"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- /.col -->
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary btn-block">Đăng nhập</button>
+            </div>
+            <!-- /.col -->
+        </div>
+    }
+
+
+    <!-- /.social-auth-links -->
+
+</div>
